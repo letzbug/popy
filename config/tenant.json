@@ -12,5 +12,14 @@
     "Langues",
     "Informatique"
   ],
-  "dataMode": "unipop-trainings"
+  "dataMode": "unipop-trainings",
+  "filters": {
+    "organizerCode": "UNIPOP",
+    "futureOnly": true
+  },
+  "search": {
+    "fuzzy": true,
+    "typoTolerance": true,
+    "contextual": true
+  }
 }

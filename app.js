@@ -29,7 +29,7 @@ async function boot(){
 
   addAssistant(
     `Bonjour ! Je suis <strong>popy</strong>, votre assistant UniPop. ` +
-    `J'ai actuellement <strong>${courses.length}</strong> cours actuels ou à venir dans ma base. ` +
+    `J'ai actuellement <strong>${courses.length}</strong> cours UniPop actuels ou à venir dans ma base. ` +
     `Comment puis-je vous aider aujourd'hui ?`
   );
   bindPromptButtons();
@@ -89,12 +89,12 @@ function ask(text){
   const q=text.toLowerCase();
 
   if(/combien.*cours|wie viele.*kurs|how many.*course/.test(q)){
-    addAssistant(`J'ai actuellement <strong>${courses.length}</strong> cours actuels ou à venir dans les données UniPop.`);
+    addAssistant(`J'ai actuellement <strong>${courses.length}</strong> cours UniPop actuels ou à venir.`);
     return;
   }
 
   if(/qui es-tu|qui es tu|wer bist|who are you|qu.?est.*unipop/.test(q)){
-    addAssistant("Je suis <strong>popy</strong>, l'assistant UniPop. Je cherche uniquement dans les données UniPop chargées et je n'invente pas de cours.");
+    addAssistant("Je suis <strong>popy</strong>, l'assistant UniPop. Je cherche uniquement dans les cours officiels UniPop chargés et je n'affiche aucun cours d'un autre organisateur.");
     return;
   }
 

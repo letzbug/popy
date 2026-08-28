@@ -14,3 +14,81 @@ button,input{font:inherit}.shell{width:min(1380px,calc(100% - 28px));margin:auto
 .courseDesc{font-size:13px;line-height:1.45;color:#595a73;margin:10px 0}
 .courseLink{display:inline-block;margin-top:10px;text-decoration:none;font-weight:800;color:#6554df;font-size:13px}
 .courseLink:hover{text-decoration:underline}
+
+
+/* --- popy logo: CSS face, no clipping --- */
+.logoRow{
+  display:flex !important;
+  align-items:center !important;
+  gap:14px !important;
+  overflow:visible !important;
+}
+.logo{
+  display:flex !important;
+  align-items:center !important;
+  gap:0 !important;
+  width:max-content !important;
+  overflow:visible !important;
+  padding:12px 4px 10px 2px !important;
+  font-size:clamp(74px,10vw,128px) !important;
+  line-height:.82 !important;
+  font-weight:900 !important;
+  letter-spacing:-.09em !important;
+  background:none !important;
+  -webkit-background-clip:initial !important;
+  color:inherit !important;
+}
+.logoP,.logoPY{
+  display:block;
+  line-height:.82;
+  background:linear-gradient(90deg,#5c4de5,#b35ee6 55%,#ff6a65 80%,#ffad5d);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.logoP{padding-right:.015em}
+.logoPY{margin-left:-.055em}
+.logoFace{
+  position:relative;
+  display:inline-block;
+  width:.64em;
+  height:.64em;
+  margin-left:-.045em;
+  margin-right:-.035em;
+  border-radius:50%;
+  flex:0 0 auto;
+  background:linear-gradient(145deg,#8c69f2,#c15fe0 56%,#f46e92);
+  transform:translateY(.015em);
+}
+.logoFace::before,
+.logoFace::after{
+  content:"";
+  position:absolute;
+  top:28%;
+  width:10%;
+  height:10%;
+  border-radius:50%;
+  background:white;
+}
+.logoFace::before{left:27%}
+.logoFace::after{right:27%}
+.logoFace i{
+  position:absolute;
+  left:27%;
+  top:47%;
+  width:46%;
+  height:25%;
+  border:clamp(2px,.026em,4px) solid white;
+  border-top:0;
+  border-left-color:transparent;
+  border-right-color:transparent;
+  border-radius:0 0 50% 50%;
+}
+.logoFace b{display:none}
+@media(max-width:520px){
+  .logo{font-size:78px !important;padding-top:10px !important}
+}
+
+@media(min-width:1100px){
+  .courseGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
