@@ -119,11 +119,19 @@ function ask(text){
     return;
   }
 
-  const found=searchCourses(courses,text);
-  if(found.length){
+  const result=searchCourses(courses,text);
+  const found=result.courses;
+
+  if(found.length && result.mode==='exact'){
     replaceQueryAndAnswer(
       text,
-      `Voici ${found.length === 1 ? 'un cours qui pourrait' : `${found.length} cours qui pourraient`} vous intéresser :`,
+      `Voici ${found.length === 1 ? 'le cours qui correspond' : `${found.length} cours qui correspondent`} le mieux à votre demande :`,
+      found
+    );
+  } else if(found.length && result.mode==='near'){
+    replaceQueryAndAnswer(
+      text,
+      `Je n'ai pas trouvé de correspondance exacte avec tous vos critères. Voici les alternatives UniPop les plus proches :`,
       found
     );
   } else {
