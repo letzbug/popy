@@ -3,7 +3,7 @@
   "assistantName": "popy",
   "organization": "UniPop",
   "language": "fr",
-  "dataSource": "./data/courses.json",
+  "dataSource": "https://raw.githubusercontent.com/letzbug/signage/main/data/trainings.json",
   "knowledgeSource": "./knowledge/unipop.json",
   "categories": [
     "Créativité",
@@ -11,5 +11,6 @@
     "Photo",
     "Langues",
     "Informatique"
-  ]
+  ],
+  "dataMode": "unipop-trainings"
 }
