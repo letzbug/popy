@@ -3,7 +3,7 @@
   "assistantName": "popy",
   "organization": "UniPop",
   "language": "fr",
-  "dataSource": "https://raw.githubusercontent.com/letzbug/signage/main/data/trainings.json",
+  "dataSource": "https://raw.githubusercontent.com/letzbug/franks_magic/main/data/trainings.json",
   "knowledgeSource": "./knowledge/unipop.json",
   "categories": [
     "Créativité",
@@ -21,5 +21,6 @@
     "fuzzy": true,
     "typoTolerance": true,
     "contextual": true
-  }
+  },
+  "cache": "no-store"
 }

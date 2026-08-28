@@ -12,7 +12,8 @@ async function boot(){
     return r.json();
   });
 
-  const raw = await fetch(config.dataSource, {cache:'no-store'}).then(r=>{
+  const liveDataUrl = config.dataSource + (config.dataSource.includes('?') ? '&' : '?') + 'v=' + Date.now();
+  const raw = await fetch(liveDataUrl, {cache:'no-store'}).then(r=>{
     if(!r.ok) throw new Error(`Trainings HTTP ${r.status}`);
     return r.json();
   });
