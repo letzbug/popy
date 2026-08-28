@@ -81,9 +81,15 @@ function addUser(text){
   messages.scrollTop=messages.scrollHeight;
 }
 
+function clearForNewQuery(){
+  // One question + one answer only: remove the previous query/results.
+  messages.innerHTML='';
+}
+
 function ask(text){
   text=(text||'').trim();
   if(!text) return;
+  clearForNewQuery();
   addUser(text);
   $('#chatInput').value='';
 

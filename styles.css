@@ -92,3 +92,27 @@ button,input{font:inherit}.shell{width:min(1380px,calc(100% - 28px));margin:auto
 @media(min-width:1100px){
   .courseGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
+/* v5: keep the complete popy logo visible */
+.hero{overflow:visible !important}
+.logoRow{
+  overflow:visible !important;
+  min-height:clamp(92px,12vw,145px) !important;
+  padding:14px 12px 14px 18px !important;
+}
+.logo{
+  overflow:visible !important;
+  width:max-content !important;
+  max-width:100% !important;
+  padding:.16em .14em .18em .10em !important;
+  margin:-.08em 0 !important;
+  letter-spacing:-.075em !important;
+}
+.logoP,.logoPY,.logoFace{
+  overflow:visible !important;
+  flex-shrink:0 !important;
+}
+@media(max-width:520px){
+  .logoRow{min-height:100px !important;padding-left:12px !important}
+  .logo{font-size:72px !important;padding:.18em .12em .20em .08em !important}
+}
