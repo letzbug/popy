@@ -1,0 +1,15 @@
+{
+  "id": "unipop",
+  "assistantName": "popy",
+  "organization": "UniPop",
+  "language": "fr",
+  "dataSource": "./data/courses.json",
+  "knowledgeSource": "./knowledge/unipop.json",
+  "categories": [
+    "Créativité",
+    "Bien-être",
+    "Photo",
+    "Langues",
+    "Informatique"
+  ]
+}

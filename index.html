@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#735cff">
+  <title>popy · Votre assistant UniPop</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div class="logoRow">
+        <div class="logo">p<span>☺</span>py</div>
+        <div class="beta">beta</div>
+      </div>
+      <p class="kicker">Votre assistant UniPop</p>
+      <h1>Trouvez le cours qui vous inspire.</h1>
+      <p class="lead">Posez une question à popy et découvrez les cours qui correspondent à vos envies, votre lieu et votre disponibilité.</p>
+      <div class="chips" id="chips"></div>
+    </header>
+
+    <main class="app">
+      <aside class="side">
+        <div>
+          <div class="miniLogo">popy</div>
+          <button class="newChat" id="newChat">＋ Nouveau chat</button>
+          <h3>Suggestions</h3>
+          <button data-prompt="Je cherche un cours de photographie.">⌕ Trouver un cours</button>
+          <button data-prompt="Quels cours sont disponibles ce week-end ?">◷ Ce week-end</button>
+          <button data-prompt="Je cherche une activité bien-être.">♡ Bien-être</button>
+          <button data-prompt="Je veux apprendre quelque chose de créatif.">✦ Créativité</button>
+          <button data-prompt="Quels cours de langues sont disponibles ?">◌ Langues</button>
+        </div>
+        <div class="learnBox">
+          <div class="orb">☺</div>
+          <strong>popy apprend</strong>
+          <span>chaque jour pour mieux vous aider.</span>
+        </div>
+      </aside>
+
+      <section class="chat">
+        <div class="chatHead">
+          <div>
+            <strong>Que souhaitez-vous apprendre aujourd'hui ?</strong>
+            <small>Prototype · données locales</small>
+          </div>
+          <button id="infoBtn" class="infoBtn">i</button>
+        </div>
+
+        <div id="messages" class="messages"></div>
+
+        <div class="starter">
+          <button data-prompt="Je cherche un cours le soir en semaine.">En soirée</button>
+          <button data-prompt="Je veux apprendre quelque chose de créatif.">Créativité</button>
+          <button data-prompt="Je cherche un cours pour débutant.">Débutant</button>
+        </div>
+
+        <form id="chatForm" class="composer">
+          <input id="chatInput" placeholder="Posez-moi une question sur les cours…" autocomplete="off">
+          <button type="submit">➜</button>
+        </form>
+      </section>
+    </main>
+
+    <section class="stats">
+      <article><strong>500+</strong><span>cours et ateliers</span></article>
+      <article><strong>20+</strong><span>lieux au Luxembourg</span></article>
+      <article><strong>4 langues</strong><span>FR · DE · EN · LU</span></article>
+      <article><strong>24/7</strong><span>assistant disponible</span></article>
+    </section>
+
+    <section class="cards">
+      <article><small>À propos</small><h2>UniPop</h2><p>Une plateforme d'apprentissage ouverte à tous. La base de connaissances pourra contenir les informations officielles de l'organisation.</p></article>
+      <article><small>popy peut</small><h2>Vous aider à</h2><ul><li>Trouver un cours</li><li>Filtrer par lieu, date ou thème</li><li>Proposer des recommandations</li><li>Répondre aux questions pratiques</li></ul></article>
+      <article><small>Architecture</small><h2>Prête à évoluer</h2><p>Le moteur, les données, le savoir et le branding sont séparés afin de pouvoir créer d'autres assistants sur la même base.</p></article>
+    </section>
+
+    <footer>popy · UniPop Course Assistant <span>Reusable assistant core</span></footer>
+  </div>
+
+  <dialog id="infoDialog">
+    <button id="closeInfo">×</button>
+    <h2>À propos de ce prototype</h2>
+    <p>Cette première version fonctionne entièrement dans le navigateur. La prochaine étape sera de connecter la vraie source JSON UniPop, puis un modèle LLM via une couche serveur sécurisée.</p>
+  </dialog>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

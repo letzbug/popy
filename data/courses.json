@@ -1,0 +1,57 @@
+[
+  {
+    "id": "photo-001",
+    "title": "Photo : Bien débuter",
+    "category": "Photo",
+    "location": "Luxembourg",
+    "language": "FR",
+    "level": "Débutant",
+    "time": "soir",
+    "description": "Les bases pour maîtriser votre appareil photo.",
+    "url": "https://www.unipop.lu"
+  },
+  {
+    "id": "well-001",
+    "title": "Pilates Postural",
+    "category": "Bien-être",
+    "location": "Belval",
+    "language": "FR",
+    "level": "Tous niveaux",
+    "time": "soir",
+    "description": "Travail postural, respiration et mobilité.",
+    "url": "https://www.unipop.lu"
+  },
+  {
+    "id": "lang-001",
+    "title": "Lëtzebuergesch aktiv lauschteren",
+    "category": "Langues",
+    "location": "Ettelbruck",
+    "language": "LU",
+    "level": "Intermédiaire",
+    "time": "soir",
+    "description": "Améliorer sa compréhension orale en luxembourgeois.",
+    "url": "https://www.unipop.lu"
+  },
+  {
+    "id": "creative-001",
+    "title": "Sketchbook Evenings",
+    "category": "Créativité",
+    "location": "Luxembourg",
+    "language": "EN",
+    "level": "Tous niveaux",
+    "time": "soir",
+    "description": "Drawing, watercolor and mixed techniques.",
+    "url": "https://www.unipop.lu"
+  },
+  {
+    "id": "photo-002",
+    "title": "Colorimétrie et Lightroom",
+    "category": "Photo",
+    "location": "Belval",
+    "language": "FR",
+    "level": "Intermédiaire",
+    "time": "weekend",
+    "description": "Couleur, retouche et workflow Lightroom.",
+    "url": "https://www.unipop.lu"
+  }
+]
