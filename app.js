@@ -28,7 +28,7 @@ async function boot(){
     chips.appendChild(b);
   });
 
-  addAssistant(
+  showInitialMessage(
     `Bonjour ! Je suis <strong>popy</strong>, votre assistant UniPop. ` +
     `J'ai actuellement <strong>${courses.length}</strong> cours UniPop actuels ou à venir dans ma base. ` +
     `Comment puis-je vous aider aujourd'hui ?`
@@ -64,55 +64,73 @@ function courseCard(c){
     </article>`;
 }
 
-function addAssistant(html, found=[]){
+
+function assistantNode(html, found=[]){
   const row=document.createElement('div');
   row.className='msg assistant';
   const cards=found.length ? `<div class="courseGrid">${found.map(courseCard).join('')}</div>` : '';
   row.innerHTML=`<div class="avatar">☺</div><div class="bubble">${html}${cards}</div>`;
-  messages.appendChild(row);
-  messages.scrollTop=messages.scrollHeight;
+  return row;
 }
 
-function addUser(text){
+function userNode(text){
   const row=document.createElement('div');
   row.className='msg user';
   row.innerHTML=`<div class="bubble">${escapeHtml(text)}</div>`;
-  messages.appendChild(row);
-  messages.scrollTop=messages.scrollHeight;
+  return row;
 }
 
-function clearForNewQuery(){
-  // One question + one answer only: remove the previous query/results.
-  messages.innerHTML='';
+function showInitialMessage(html){
+  messages.replaceChildren(assistantNode(html));
+}
+
+function replaceQueryAndAnswer(text, answerHtml, found=[]){
+  // IMPORTANT: the current question and answer replace EVERYTHING that was there before.
+  // This prevents a growing chat/history page.
+  const user = userNode(text);
+  const assistant = assistantNode(answerHtml, found);
+  messages.replaceChildren(user, assistant);
+  messages.scrollTop = 0;
+  window.requestAnimationFrame(()=>{
+    messages.closest('.chat')?.scrollIntoView({block:'start', behavior:'smooth'});
+  });
 }
 
 function ask(text){
   text=(text||'').trim();
   if(!text) return;
-  clearForNewQuery();
-  addUser(text);
-  $('#chatInput').value='';
 
+  $('#chatInput').value='';
   const q=text.toLowerCase();
 
   if(/combien.*cours|wie viele.*kurs|how many.*course/.test(q)){
-    addAssistant(`J'ai actuellement <strong>${courses.length}</strong> cours UniPop actuels ou à venir.`);
+    replaceQueryAndAnswer(
+      text,
+      `J'ai actuellement <strong>${courses.length}</strong> cours UniPop actuels ou à venir.`
+    );
     return;
   }
 
   if(/qui es-tu|qui es tu|wer bist|who are you|qu.?est.*unipop/.test(q)){
-    addAssistant("Je suis <strong>popy</strong>, l'assistant UniPop. Je cherche uniquement dans les cours officiels UniPop chargés et je n'affiche aucun cours d'un autre organisateur.");
+    replaceQueryAndAnswer(
+      text,
+      "Je suis <strong>popy</strong>, l'assistant UniPop. Je cherche uniquement dans les cours officiels UniPop chargés et je n'affiche aucun cours d'un autre organisateur."
+    );
     return;
   }
 
   const found=searchCourses(courses,text);
   if(found.length){
-    addAssistant(
+    replaceQueryAndAnswer(
+      text,
       `Voici ${found.length === 1 ? 'un cours qui pourrait' : `${found.length} cours qui pourraient`} vous intéresser :`,
       found
     );
   } else {
-    addAssistant("Je n'ai trouvé aucune correspondance suffisamment claire dans les cours UniPop actuels. Essayez avec un thème, un lieu, une langue, un niveau ou un moment de la semaine.");
+    replaceQueryAndAnswer(
+      text,
+      "Je n'ai trouvé aucune correspondance suffisamment claire dans les cours UniPop actuels. Essayez avec un thème, un lieu, une langue, un niveau ou un moment de la semaine."
+    );
   }
 }
 
@@ -121,13 +139,13 @@ function escapeHtml(s=''){
 }
 
 $('#chatForm').addEventListener('submit',e=>{e.preventDefault();ask($('#chatInput').value)});
-$('#newChat').onclick=()=>{messages.innerHTML='';addAssistant(`Nouveau chat ouvert. J'ai ${courses.length} cours actuels ou à venir. Qu'avez-vous envie d'apprendre ?`)};
+$('#newChat').onclick=()=>showInitialMessage(`Nouveau chat ouvert. J'ai ${courses.length} cours UniPop actuels ou à venir. Qu'avez-vous envie d'apprendre ?`);
 $('#infoBtn').onclick=()=>$('#infoDialog').showModal();
 $('#closeInfo').onclick=()=>$('#infoDialog').close();
 
 boot().catch(err=>{
   console.error(err);
-  addAssistant(
+  showInitialMessage(
     "Je n'arrive pas à charger la source UniPop pour le moment. " +
     "Vérifiez la connexion et que le site est ouvert via GitHub Pages."
   );

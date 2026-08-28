@@ -116,3 +116,106 @@ button,input{font:inherit}.shell{width:min(1380px,calc(100% - 28px));margin:auto
   .logoRow{min-height:100px !important;padding-left:12px !important}
   .logo{font-size:72px !important;padding:.18em .12em .20em .08em !important}
 }
+
+/* ===== v6 definitive logo fix =====
+   No negative margins, no clipping, no overlap. */
+.hero{
+  overflow:visible !important;
+}
+.logoRow{
+  display:flex !important;
+  align-items:center !important;
+  gap:14px !important;
+  overflow:visible !important;
+  padding:10px 0 16px 6px !important;
+  min-height:auto !important;
+}
+.logo{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:.015em !important;
+  width:max-content !important;
+  max-width:100% !important;
+  margin:0 !important;
+  padding:.08em .12em .12em .06em !important;
+  overflow:visible !important;
+  font-size:clamp(72px,9vw,118px) !important;
+  line-height:1 !important;
+  letter-spacing:0 !important;
+  background:none !important;
+  color:inherit !important;
+  -webkit-background-clip:initial !important;
+}
+.logoP,
+.logoPY{
+  display:inline-block !important;
+  margin:0 !important;
+  padding:0 !important;
+  transform:none !important;
+  line-height:1 !important;
+  letter-spacing:-.075em !important;
+  overflow:visible !important;
+  background:linear-gradient(90deg,#614fe7,#b65ede 55%,#ff6f6f 82%,#ffad5f);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.logoP{
+  width:.58em;
+}
+.logoPY{
+  width:1.08em;
+}
+.logoFace{
+  position:relative !important;
+  display:inline-block !important;
+  width:.64em !important;
+  height:.64em !important;
+  min-width:.64em !important;
+  flex:0 0 .64em !important;
+  margin:0 .01em !important;
+  padding:0 !important;
+  transform:none !important;
+  overflow:visible !important;
+  border-radius:50% !important;
+  background:linear-gradient(145deg,#8b68f2,#bd5ddd 58%,#ef6d9b) !important;
+}
+.logoFace::before,
+.logoFace::after{
+  content:"" !important;
+  position:absolute !important;
+  top:28% !important;
+  width:9% !important;
+  height:9% !important;
+  border-radius:50% !important;
+  background:#fff !important;
+}
+.logoFace::before{left:27% !important}
+.logoFace::after{right:27% !important}
+.logoFace i{
+  position:absolute !important;
+  left:28% !important;
+  top:47% !important;
+  width:44% !important;
+  height:22% !important;
+  border:3px solid #fff !important;
+  border-top:0 !important;
+  border-left-color:transparent !important;
+  border-right-color:transparent !important;
+  border-radius:0 0 50% 50% !important;
+}
+.logoFace b{display:none !important}
+
+@media(max-width:520px){
+  .logoRow{padding-left:2px !important}
+  .logo{
+    font-size:68px !important;
+    padding-left:.08em !important;
+  }
+}
+
+/* v6: results area never becomes a history */
+.messages{
+  overflow:visible !important;
+}
